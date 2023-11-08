@@ -12,6 +12,5 @@ class AddedToCartBloc extends Bloc<AddedToCartEvent, AddedToCartState> {
   }
 
   FutureOr<void> _addedToCartEvent(event, Emitter<AddedToCartState> emit) async {
-
   }
 }

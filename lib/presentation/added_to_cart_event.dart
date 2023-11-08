@@ -7,7 +7,12 @@ abstract class AddedToCartEvent extends Equatable {
   List<Object?> get props =>[];
 }
 
-class CartStatus extends AddedToCartEvent{
+class AddToCart extends AddedToCartEvent{
+  final int value1,value2;
+  const AddToCart(this.value1, this.value2):super();
+}
 
-  const CartStatus():super();
+class RemoveFromCart extends AddedToCartEvent{
+  final int value1,value2;
+  const RemoveFromCart(this.value1, this.value2):super();
 }

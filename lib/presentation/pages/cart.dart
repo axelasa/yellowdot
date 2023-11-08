@@ -10,10 +10,16 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   int addToCart = 0;
-  @override
-  void initState() {
-    addToCart;
-    super.initState();
+  void incrementCount(){
+    setState(() {
+      addToCart++;
+    });
+  }
+
+  void decrementCount(){
+    setState(() {
+      addToCart--;
+    });
   }
 
   @override
@@ -44,8 +50,8 @@ class _CartState extends State<Cart> {
                   const SizedBox(height: 20,),
                   Column(
                     children: [
-                      Text(
-                        'A Power Solar Panel Kit\n12V Monocrystalline,\n Battery Maintainer 10A..',
+                      const Text(
+                        ' A Power Solar Panel Kit\n 12V Monocrystalline,\n Battery Maintainer 10A..',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -54,7 +60,7 @@ class _CartState extends State<Cart> {
                         maxLines: 8,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,19 +108,19 @@ class _CartState extends State<Cart> {
                         ),
                       ),
                       const SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 60.0),
-                        child: const Text('Only 2 left in stock',
+                      const Padding(
+                        padding: EdgeInsets.only(right: 60.0),
+                        child: Text('Only 2 left in stock',
                           textAlign: TextAlign.start,
                           style: TextStyle(
                               color: Colors.red
                           ),
                         ),
                       ),
-                      SizedBox(height: 20,),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 68.0),
-                        child: const Text('Color:Black,Blue',
+                      const SizedBox(height: 20,),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 68.0),
+                        child: Text('Color:Black,Blue',
                           style: TextStyle(
                               color: Colors.black
                           ),
@@ -124,7 +130,7 @@ class _CartState extends State<Cart> {
                   ),
                 ],
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +138,7 @@ class _CartState extends State<Cart> {
                   Expanded(
                     child: Card(
                       child: IconButton(onPressed: (){
-                        addToCart--;
+                        decrementCount();
                       },
                         icon: const Icon(Icons.remove,
                             color: Colors.black
@@ -153,7 +159,7 @@ class _CartState extends State<Cart> {
                     child: Card(
                       child: IconButton(
                           onPressed: (){
-                            addToCart++;
+                            incrementCount();
                           },
                           icon: const Icon(
                               Icons.add,color: Colors.black
@@ -165,7 +171,10 @@ class _CartState extends State<Cart> {
                   Expanded(
                     child: Card(
                       elevation: 2,
-                      child: IconButton(onPressed: (){},
+                      child: IconButton(
+                        onPressed: (){
+                          decrementCount();
+                        },
                         icon: const Icon(
                           Icons.delete,
                           color: Colors.black,
@@ -178,7 +187,9 @@ class _CartState extends State<Cart> {
                     child: Card(
                       elevation: 2,
                       child: IconButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          incrementCount();
+                        },
                         icon: const Icon(
                             Icons.save_alt
                         ),

@@ -10,10 +10,10 @@ class AddedToCartInitial extends AddedToCartState {
 
 }
 
-class AddToCart extends AddedToCartState{
-  final int addedToCart ;
+class CartState extends AddedToCartState{
+  final int addedToCart ,removeFromCart;
 
-  const AddToCart(this.addedToCart):super();
+  const CartState(this.addedToCart, this.removeFromCart):super();
 
   @override
   List<Object> get props => [addedToCart];
