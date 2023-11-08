@@ -1,5 +1,7 @@
+import 'package:cart/presentation/cart_bloc.dart';
 import 'package:cart/presentation/pages/constants/consytant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
@@ -9,17 +11,14 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  int addToCart = 0;
-  void incrementCount(){
-    setState(() {
-      addToCart++;
-    });
+  late var cartBloc = BlocProvider.of<CartBloc>(context);
+
+  void incrementCount() {
+    cartBloc.add(const AddToCart());
   }
 
-  void decrementCount(){
-    setState(() {
-      addToCart--;
-    });
+  void decrementCount() {
+    cartBloc.add(const RemoveFromCart());
   }
 
   @override
@@ -53,9 +52,9 @@ class _CartState extends State<Cart> {
                       const Text(
                         ' A Power Solar Panel Kit\n 12V Monocrystalline,\n Battery Maintainer 10A..',
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
                         ),
                         maxLines: 8,
                         overflow: TextOverflow.ellipsis,
@@ -64,13 +63,13 @@ class _CartState extends State<Cart> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:const [
+                          children: const [
                             Card(
                               elevation: 0,
                               // shape:
                               color: Colors.orange,
                               child: Text('Best Seller',
-                                style:TextStyle(
+                                style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black
@@ -93,7 +92,7 @@ class _CartState extends State<Cart> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:const [
+                            children: const [
                               Text('kes',
                                 textAlign: TextAlign.start,
                               ),
@@ -131,72 +130,82 @@ class _CartState extends State<Cart> {
                 ],
               ),
               const SizedBox(height: 15,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Card(
-                      child: IconButton(onPressed: (){
-                        decrementCount();
-                      },
-                        icon: const Icon(Icons.remove,
-                            color: Colors.black
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                      width: 30,
-                      child: Center(
-                        child: (
-                            Text(addToCart.toString(),
-                          textAlign: TextAlign.center,
-                        )),
-                      )),
-                  Expanded(
-                    child: Card(
-                      child: IconButton(
-                          onPressed: (){
-                            incrementCount();
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  if(state is NoCartState){
+                    return IconButton(onPressed: incrementCount,
+                        icon: Icon(Icons.shopping_cart)
+                    );
+                  }
+                  var hasState = state as HasCartState;
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Card(
+                          child: IconButton(onPressed: () {
+                            decrementCount();
                           },
-                          icon: const Icon(
-                              Icons.add,color: Colors.black
-                          )
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10,),
-                  Expanded(
-                    child: Card(
-                      elevation: 2,
-                      child: IconButton(
-                        onPressed: (){
-                          decrementCount();
-                        },
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.black,
-                        ),
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Card(
-                      elevation: 2,
-                      child: IconButton(
-                        onPressed: (){
-                          incrementCount();
-                        },
-                        icon: const Icon(
-                            Icons.save_alt
+                            icon: const Icon(Icons.remove,
+                                color: Colors.black
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                      SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: Center(
+                            child: (
+                                Text(hasState.cartItems.toString(),
+                                  textAlign: TextAlign.center,
+                                )),
+                          )),
+                      Expanded(
+                        child: Card(
+                          child: IconButton(
+                              onPressed: () {
+                                incrementCount();
+                              },
+                              icon: const Icon(
+                                  Icons.add, color: Colors.black
+                              )
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10,),
+                      Expanded(
+                        child: Card(
+                          elevation: 2,
+                          child: IconButton(
+                            onPressed: () {
+                              //decrementCount();
+                            },
+                            icon: const Icon(
+                              Icons.delete,
+                              color: Colors.black,
+                            ),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Card(
+                          elevation: 2,
+                          child: IconButton(
+                            onPressed: () {
+                              //incrementCount();
+                            },
+                            icon: const Icon(
+                                Icons.save_alt
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  );
+                },
               ),
             ],
           ),
