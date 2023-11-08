@@ -82,31 +82,42 @@ class _CartState extends State<Cart> {
                           ]
                       ),
                       const SizedBox(height: 10,),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children:const [
-                            Text('kes',
-                              textAlign: TextAlign.left,
-                            ),
-                            Text('185,876°°',
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black
+                      Padding(
+                        padding: const EdgeInsets.only(right: 48.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:const [
+                              Text('kes',
+                                textAlign: TextAlign.start,
                               ),
-                            )
-                          ]
-                      ),
-                      const SizedBox(height: 10,),
-                      const Text('Only 2 left in stock',
-                        style: TextStyle(
-                            color: Colors.red
+                              Text('185,876°°',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black
+                                ),
+                              )
+                            ]
                         ),
                       ),
-                      const Text('Color:Black,Blue',
-                        style: TextStyle(
-                            color: Colors.black
+                      const SizedBox(height: 10,),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 60.0),
+                        child: const Text('Only 2 left in stock',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              color: Colors.red
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 68.0),
+                        child: const Text('Color:Black,Blue',
+                          style: TextStyle(
+                              color: Colors.black
+                          ),
                         ),
                       ),
                     ],
