@@ -32,16 +32,16 @@ class _CartState extends State<Cart> {
                   Column(
                     children: [
                       Container(
-                        height: 200,
-                        width: 200,
+                        height: 250,
+                        width: 164,
                         child: Image(
                           image: AssetImage(designer),
-                          fit: BoxFit.scaleDown,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: 20,),
                   Column(
                     children: [
                       Text(
@@ -52,15 +52,14 @@ class _CartState extends State<Cart> {
                             color: Colors.black,
                         ),
                         maxLines: 8,
-                        overflow: ,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 10,),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:[
+                          children:const [
                             Card(
-
                               elevation: 0,
                               // shape:
                               color: Colors.orange,
@@ -72,7 +71,8 @@ class _CartState extends State<Cart> {
                                 ),
                               ),
 
-                            ),Text('in Solar panels',
+                            ),
+                            Text('in Solar panels',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
@@ -111,109 +111,9 @@ class _CartState extends State<Cart> {
                       ),
                     ],
                   ),
-                  // Row(
-                  //     mainAxisAlignment: MainAxisAlignment.start,
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children:[
-                  //       Card(
-                  //
-                  //         elevation: 0,
-                  //         // shape:
-                  //         color: Colors.orange,
-                  //         child: Text('Best Seller',
-                  //           style:TextStyle(
-                  //               fontSize: 16,
-                  //               fontWeight: FontWeight.w400,
-                  //               color: Colors.black
-                  //           ),
-                  //         ),
-                  //
-                  //       ),Text('in Solar panels',
-                  //         style: TextStyle(
-                  //             fontSize: 16,
-                  //             fontWeight: FontWeight.w400,
-                  //             color: Colors.black
-                  //         ),
-                  //       )
-                  //     ]
-                  // ),
-                  // const SizedBox(height: 10,),
-                  // Row(
-                  //     mainAxisAlignment: MainAxisAlignment.start,
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children:const [
-                  //       Text('kes',
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //       Text('185,876°°',
-                  //         style: TextStyle(
-                  //             fontSize: 25,
-                  //             fontWeight: FontWeight.w400,
-                  //             color: Colors.black
-                  //         ),
-                  //       )
-                  //     ]
-                  // ),
-                  // const SizedBox(height: 10,),
-                  // const Text('Only 2 left in stock',
-                  //   style: TextStyle(
-                  //       color: Colors.red
-                  //   ),
-                  // ),
-                  // const Text('Color:Black,Blue',
-                  //   style: TextStyle(
-                  //       color: Colors.black
-                  //   ),
-                  // ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     Card(
-                  //       child: IconButton(onPressed: (){
-                  //         addToCart--;
-                  //       },
-                  //           icon: const Icon(Icons.remove,
-                  //               color: Colors.black
-                  //           ),
-                  //       ),
-                  //     ),
-                  //     Text(addToCart.toString()),
-                  //     Card(
-                  //       child: IconButton(
-                  //           onPressed: (){
-                  //             addToCart++;
-                  //           },
-                  //           icon: const Icon(
-                  //               Icons.add,color: Colors.black
-                  //           )
-                  //       ),
-                  //     ),
-                  //     const SizedBox(width: 10,),
-                  //     Card(
-                  //       elevation: 2,
-                  //       child: IconButton(onPressed: (){},
-                  //         icon: const Icon(
-                  //           Icons.delete,
-                  //           color: Colors.black,
-                  //         ),
-                  //         color: Colors.white,
-                  //       ),
-                  //     ),
-                  //     Card(
-                  //       elevation: 2,
-                  //       child: IconButton(
-                  //         onPressed: (){},
-                  //         icon: const Icon(
-                  //             Icons.save_alt
-                  //         ),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-
                 ],
               ),
+              SizedBox(height: 15,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
